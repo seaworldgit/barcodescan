@@ -1,0 +1,75 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>棚卸情報登録</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <form (ngSubmit)="saveInventory()">
+      <ion-list>
+          <ion-item-divider>
+            対象資産
+          </ion-item-divider>
+          <ion-item >
+            <ion-label fixed >バーコード</ion-label>
+            <ion-label name="barcode">{{inventory.barcode}}</ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label fixed > 資産番号</ion-label>
+              <ion-input placeholder="Text Input" [(ngModel)]="inventory.assetNo" name="assetNo"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed > 対象資産</ion-label>
+                <ion-input placeholder="Text Input" [(ngModel)]="inventory.targetAsset" name="targetAsset"></ion-input>
+              </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item-divider>
+              調査後所在場所
+            </ion-item-divider>
+            <ion-item>
+                <ion-select okText="Okay" cancelText="Dismiss" [(ngModel)]="inventory.auditPlace" name="auditPlace">
+                  <ion-option selected value="t">東京</ion-option>
+                  <ion-option value="o">大阪</ion-option>
+                </ion-select>
+              </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-item-divider>
+              資産有/無
+            </ion-item-divider>
+            <ion-item>
+                <ion-select okText="Okay" cancelText="Dismiss" [(ngModel)]="inventory.hasAsset" name="hasAsset">
+                  <ion-option selected value="t">確認中</ion-option>
+                  <ion-option value="o">確認済</ion-option>
+                </ion-select>
+              </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-item-divider>
+              貯蔵品使用予定
+            </ion-item-divider>
+            <ion-item>
+                <ion-select okText="Okay" cancelText="Dismiss" [(ngModel)]="inventory.storePlan" name="storePlan">
+                  <ion-option selected value="t">未使用/取得時と用途変更</ion-option>
+                  <ion-option value="o">確認済</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item-divider>
+                貯蔵品使用日等
+              </ion-item-divider>
+              <ion-item>
+                <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="inventory.storeDate" name="storeDate">
+                </ion-datetime>
+                </ion-item>
+          </ion-list>
+  </form>
+
+</ion-content>
+<ion-footer>
+  <ion-item>
+    <button ion-button full (click)="saveInventory()">登録2</button>
+  </ion-item>
+</ion-footer>
